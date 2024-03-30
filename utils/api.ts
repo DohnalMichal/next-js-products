@@ -6,9 +6,11 @@ export const createURL = (path: string) => {
   return `${BASE_URL}${path}`
 }
 
-export const getProducts = async (): Promise<ProductResponse> => {
+export const getProducts = async (query?: string): Promise<ProductResponse> => {
+  const queryString = query?.length ? `/search?q=${query}` : ''
+
   const res = await fetch(
-    new Request(createURL('/products'), {
+    new Request(createURL(`/products${queryString}`), {
       method: 'GET',
     }),
   )

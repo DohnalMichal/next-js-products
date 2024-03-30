@@ -1,13 +1,18 @@
 import Link from 'next/link'
 import { getProducts } from '@/utils/api'
-import type { Product } from '@/types/products'
+import SearchInput from '@/components/SearchInput'
 
-const ProductsPage = async () => {
-  const entries = await getProducts()
+type Props = {
+  searchParams: { q: string }
+}
+
+const ProductsPage = async ({ searchParams }: Props) => {
+  const entries = await getProducts(searchParams.q)
 
   return (
     <div>
-      {entries.products.map((product: Product) => (
+      <SearchInput />
+      {entries.products.map((product) => (
         <div
           key={product.id}
           className="flex items-center justify-between border-b border-gray-200 py-2"

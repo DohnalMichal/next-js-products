@@ -2,8 +2,8 @@ import type { ReactNode } from 'react'
 
 const ProductsLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="ml-auto mr-auto max-w-3xl">
-      <div className=" flex flex-col">{children}</div>
+    <div className="h-screen ml-auto mr-auto max-w-3xl">
+      <div className="h-full flex flex-col">{children}</div>
     </div>
   )
 }

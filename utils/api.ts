@@ -1,4 +1,4 @@
-import { Product, ProductResponse } from '@/types/products'
+import type { Product, ProductResponse } from '@/types/products'
 
 export const BASE_URL = 'https://dummyjson.com'
 
@@ -26,6 +26,20 @@ export const getProduct = async (id: number): Promise<Product> => {
   const res = await fetch(
     new Request(createURL(`/products/${id}`), {
       method: 'GET',
+    }),
+  )
+
+  if (res.ok) {
+    return res.json()
+  } else {
+    throw new Error('Something went wrong!')
+  }
+}
+
+export const deleteProduct = async (id: number): Promise<Product> => {
+  const res = await fetch(
+    new Request(createURL(`/products/${id}`), {
+      method: 'DELETE',
     }),
   )
 

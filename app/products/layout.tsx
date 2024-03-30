@@ -1,4 +1,3 @@
-import { searchProducts } from '@/utils/api'
 import type { ReactNode } from 'react'
 
 const ProductsLayout = async ({ children }: { children: ReactNode }) => {

@@ -24,24 +24,28 @@ const ProductsList = ({ products }: Props) => {
     await deleteProduct(id)
   }
 
-  return items.map((product) => (
-    <div
-      key={product.id}
-      className="flex items-center justify-between border-b border-gray-200 py-2"
-    >
-      <Link href={`/products/${product.id}`} className="font-semibold">
-        {product.title}
-      </Link>
+  return (
+    <div className="mt-4 mx-auto flex flex-col w-3/4 h-[600px] justify-center">
+      {items.map((product) => (
+        <div
+          key={product.id}
+          className="flex items-center justify-between border-b border-gray-200 py-2"
+        >
+          <Link href={`/products/${product.id}`} className="font-semibold">
+            {product.title}
+          </Link>
 
-      <button
-        type="submit"
-        className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
-        onClick={() => handleDelte(product.id)}
-      >
-        DELETE
-      </button>
+          <button
+            type="submit"
+            className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
+            onClick={() => handleDelte(product.id)}
+          >
+            DELETE
+          </button>
+        </div>
+      ))}
     </div>
-  ))
+  )
 }
 
 export default ProductsList

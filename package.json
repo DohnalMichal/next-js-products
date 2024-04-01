@@ -2,6 +2,7 @@
   "name": "digiverse-interview-task",
   "version": "0.1.0",
   "private": true,
+  "author": "Michal Dohnal",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

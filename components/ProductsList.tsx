@@ -5,11 +5,7 @@ import Link from 'next/link'
 import { deleteProduct } from '@/utils/api'
 import type { Product } from '@/types/products'
 
-type Props = {
-  products: Product[]
-}
-
-const ProductsList = ({ products }: Props) => {
+const ProductsList = ({ products }: { products: Product[] }) => {
   const [items, setItems] = useState(products)
 
   // Update the state when the products change on search.
@@ -17,7 +13,7 @@ const ProductsList = ({ products }: Props) => {
     setItems(products)
   }, [products])
 
-  const handleDelte = async (id: number) => {
+  const handleDelete = async (id: number) => {
     setItems((prev) => prev.filter((item) => item.id !== id))
 
     // This only simulates the deletion of the product.
@@ -38,7 +34,7 @@ const ProductsList = ({ products }: Props) => {
           <button
             type="submit"
             className="p-2 bg-red-500 hover:bg-red-600 text-white rounded-md"
-            onClick={() => handleDelte(product.id)}
+            onClick={() => handleDelete(product.id)}
           >
             DELETE
           </button>

@@ -25,7 +25,7 @@ const ProductsList = ({ products }: Props) => {
   }
 
   return (
-    <div className="mt-4 mx-auto flex flex-col w-3/4 h-[600px] justify-center">
+    <div className="mt-4 mx-auto flex flex-col w-3/4 h-[600px] justify-start">
       {items.map((product) => (
         <div
           key={product.id}

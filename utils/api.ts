@@ -21,23 +21,29 @@ export const getProducts = async (
     }),
   )
 
-  if (res.ok) {
-    return res.json()
-  } else {
+  try {
+    return await res.json()
+  } catch (error) {
+    console.error(error)
     throw new Error('Something went wrong!')
   }
 }
 
-export const getProduct = async (id: number): Promise<Product> => {
+export const getProduct = async (id: number): Promise<Product | null> => {
   const res = await fetch(
     new Request(createURL(`/products/${id}`), {
       method: 'GET',
     }),
   )
 
-  if (res.ok) {
-    return res.json()
-  } else {
+  try {
+    if (res.ok) {
+      return res.json()
+    } else {
+      return null
+    }
+  } catch (error) {
+    console.error(error)
     throw new Error('Something went wrong!')
   }
 }
@@ -49,9 +55,10 @@ export const deleteProduct = async (id: number): Promise<Product> => {
     }),
   )
 
-  if (res.ok) {
-    return res.json()
-  } else {
+  try {
+    return await res.json()
+  } catch (error) {
+    console.error(error)
     throw new Error('Something went wrong!')
   }
 }

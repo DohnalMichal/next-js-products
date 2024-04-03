@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { notFound } from 'next/navigation'
 import { getProduct } from '@/utils/api'
 import Carousel from '@/components/Carousel'
 
@@ -8,6 +9,10 @@ type Props = {
 
 const ProductPage = async ({ params }: Props) => {
   const product = await getProduct(params.id)
+
+  if (!product) {
+    notFound()
+  }
 
   const discountedPrice = Math.round(
     product.price - product.price * (product.discountPercentage / 100),

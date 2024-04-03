@@ -22,7 +22,7 @@ const ProductsPage = async ({ searchParams }: Props) => {
   const isSearchActive = query?.length
 
   return (
-    <>
+    <div className="h-screen mx-auto max-w-3xl">
       <SearchInput />
       <ProductsList products={entries.products} />
       {!isSearchActive && (
@@ -30,7 +30,7 @@ const ProductsPage = async ({ searchParams }: Props) => {
           <Pagination totalPages={totalPages} />
         </div>
       )}
-    </>
+    </div>
   )
 }
 
